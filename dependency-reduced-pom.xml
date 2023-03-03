@@ -4,11 +4,30 @@
   <groupId>co.com.msacceptancecriteria</groupId>
   <artifactId>MSAcceptanceCriteria</artifactId>
   <name>MSAcceptanceCriteria</name>
-  <version>0.0.1-SNAPSHOT</version>
-  <description>Microservice in charge of validating transaction acceptance criteria.</description>
+  <version>0.0.1</version>
   <build>
-    <finalName>MSAcceptanceCriteria</finalName>
+    <finalName>${project.artifactId}_${project.version}</finalName>
     <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.4.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <outputFile>${project.artifactId}_${project.version}.jar</outputFile>
+              <transformers>
+                <transformer>
+                  <mainClass>co.com.msacceptancecriteria.MSAcceptanceCriteriaApplication</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
@@ -22,39 +41,6 @@
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>co.com.msprocessidentifier.Init</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.4.1</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <outputFile>dist\${project.artifactId}.jar</outputFile>
-              <transformers>
-                <transformer>
-                  <mainClass>co.com.msacceptancecriteria.MSAcceptanceCriteriaApplication</mainClass>
-                </transformer>
-              </transformers>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

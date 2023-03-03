@@ -9,7 +9,8 @@ public class Constants {
 
 	public static final int SERVERPORT = 8089;
 
-	public static final String ENDPOINTUPLOADFILE = "http://10.94.90.211:8085/get?JSON=";
+	//public static final String ENDPOINTUPLOADFILE = "http://10.94.90.211:8085/get?JSON=";
+	public static final String ENDPOINTUPLOADFILE = "http://localhost:8085/get?JSON=";
 	public static final String ACCEPTANCECRITERIAL = "CRITERIO_ACEPTACION_BASE_24";
 	public static final String REGULAREXPRESION = "EXPRESIONESREGULARES";
 	public static final String RESPONSEFIELD = "FIELD_";
